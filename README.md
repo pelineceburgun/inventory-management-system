@@ -1,16 +1,82 @@
-# React + Vite
+# 📦 Inventory Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack inventory management web application that allows businesses to track their products, monitor stock levels, and visualize inventory data through an interactive dashboard.
 
-Currently, two official plugins are available:
+Built as a portfolio project to demonstrate full-stack development skills using modern web technologies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔐 **JWT Authentication** — Secure login system with token-based authentication. Protected routes redirect unauthenticated users to the login page.
+- 📋 **Product Management** — Full CRUD functionality to add, edit, and delete products with fields for name, SKU, category, quantity, price, and low stock threshold.
+- 🔍 **Search & Filter** — Real-time search by product name or SKU, and filter by category using a dynamic dropdown populated from live data.
+- 🚨 **Low Stock Alerts** — Products at or below their defined stock threshold are automatically highlighted in red in the products table.
+- 📊 **Dashboard** — Overview of key metrics including total products, total inventory value, and number of low stock items, alongside a bar chart showing stock levels by category.
+- 📱 **Responsive Design** — Clean, responsive UI built with Tailwind CSS that works across different screen sizes.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+| Technology | Purpose |
+|---|---|
+| React | UI library for building component-based interfaces |
+| Vite | Fast build tool and development server |
+| Tailwind CSS | Utility-first CSS framework for styling |
+| React Router | Client-side routing and navigation |
+| Axios | HTTP client for API requests |
+| Recharts | Chart library for dashboard visualizations |
+
+### Backend
+| Technology | Purpose |
+|---|---|
+| Node.js | JavaScript runtime environment |
+| Express | Web framework for building the REST API |
+| bcryptjs | Password hashing for secure storage |
+| jsonwebtoken | JWT generation and verification |
+| pg | PostgreSQL client for Node.js |
+| dotenv | Environment variable management |
+
+### Database & Hosting
+| Service | Purpose |
+|---|---|
+| PostgreSQL (Neon) | Cloud-hosted relational database |
+| Vercel | Frontend deployment and hosting |
+| Render | Backend API deployment and hosting |
+
+---
+
+## 🏗️ Project Structure
+```
+inventory-management-system/
+├── client/                   # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── Navbar.jsx    # Navigation bar with logout
+│   │   ├── pages/
+│   │   │   ├── Login.jsx     # Login page
+│   │   │   ├── Dashboard.jsx # Stats and charts overview
+│   │   │   └── Products.jsx  # Product table with CRUD
+│   │   ├── api.js            # Base API URL config
+│   │   ├── App.jsx           # Routes and layout
+│   │   └── main.jsx          # App entry point
+│   └── package.json
+└── server/                   # Express backend
+    ├── middleware/
+    │   └── auth.js           # JWT verification middleware
+    ├── routes/
+    │   ├── auth.js           # Login and register endpoints
+    │   └── products.js       # Product CRUD endpoints
+    ├── db.js                 # PostgreSQL connection
+    ├── index.js              # Server entry point
+    └── package.json
+```
+
+
+
+
+
+
