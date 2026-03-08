@@ -13,16 +13,17 @@ export default function Products() {
   const categories = [...new Set(products.map(p => p.category))]
 
   const filteredProducts = products.filter(p => {
-  const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase()) ||
-    p.sku.toLowerCase().includes(search.toLowerCase())
-  const matchesCategory = filterCategory === '' || p.category === filterCategory
-  return matchesSearch && matchesCategory
-})
+    const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase()) ||
+      p.sku.toLowerCase().includes(search.toLowerCase())
+    const matchesCategory = filterCategory === '' || p.category === filterCategory
+    return matchesSearch && matchesCategory
+  })
+
   const token = localStorage.getItem('token')
   const headers = { Authorization: `Bearer ${token}` }
 
   const fetchProducts = async () => {
-    const res = await axios.get('API_URL/products', { headers })
+    const res = await axios.get(`${API_URL}/products`, { headers })
     setProducts(res.data)
   }
 
@@ -42,16 +43,16 @@ export default function Products() {
 
   const handleSave = async () => {
     if (editing) {
-      await axios.put(`API_URL/products/${editing}`, form, { headers })
+      await axios.put(`${API_URL}/products/${editing}`, form, { headers })
     } else {
-      await axios.post('API_URL/products', form, { headers })
+      await axios.post(`${API_URL}/products`, form, { headers })
     }
     setShowModal(false)
     fetchProducts()
   }
 
   const handleDelete = async (id) => {
-    await axios.delete(`API_URL/products/${id}`, { headers })
+    await axios.delete(`${API_URL}/products/${id}`, { headers })
     fetchProducts()
   }
 
@@ -60,28 +61,28 @@ export default function Products() {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Products</h1>
         <button onClick={openAdd} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-        + Add Product
+          + Add Product
         </button>
       </div>
 
       <div className="flex gap-4 mb-4">
         <input
-         type="text"
-         placeholder="Search by name or SKU..."
-         value={search}
-         onChange={e => setSearch(e.target.value)}
-         className="border border-gray-300 rounded p-2 w-full max-w-sm"
-         />
+          type="text"
+          placeholder="Search by name or SKU..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="border border-gray-300 rounded p-2 w-full max-w-sm"
+        />
         <select
-         value={filterCategory}
-         onChange={e => setFilterCategory(e.target.value)}
-         className="border border-gray-300 rounded p-2"
+          value={filterCategory}
+          onChange={e => setFilterCategory(e.target.value)}
+          className="border border-gray-300 rounded p-2"
         >
-        <option value="">All Categories</option>
-        {categories.map(cat => (
-         <option key={cat} value={cat}>{cat}</option>
-        ))}
-         </select>
+          <option value="">All Categories</option>
+          {categories.map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
       </div>
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
@@ -137,4 +138,5 @@ export default function Products() {
       )}
     </div>
   )
+}
 }
