@@ -8,7 +8,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    axios.get('http://localhost:5000/products', {
+    axios.get(`${API_URL}/products`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setProducts(res.data))
   }, [])
@@ -56,4 +56,5 @@ export default function Dashboard() {
       </div>
     </div>
   )
+
 }
