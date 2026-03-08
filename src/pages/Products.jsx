@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import API_URL from '../api.js' 
+import API_URL from '../api.js'
 
 export default function Products() {
   const [products, setProducts] = useState([])
@@ -138,5 +138,4 @@ export default function Products() {
       )}
     </div>
   )
-}
 }
