@@ -11,7 +11,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('API_URL/auth/login', { email, password })
+      const res = await axios.post(`${API_URL}/auth/login`, { email, password })
       localStorage.setItem('token', res.data.token)
       navigate('/dashboard')
     } catch (err) {
@@ -47,4 +47,5 @@ export default function Login() {
       </div>
     </div>
   )
+
 }
